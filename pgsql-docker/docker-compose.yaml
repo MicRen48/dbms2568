@@ -1,0 +1,10 @@
+services:
+  pgsql:
+    image: postgres:16
+    container_name: pgsql_${STUDENT_ID}
+    tty: true
+    stdin_open: true
+    environment:
+      PGPASSWORD: ${STUDENT_PASSWORD}
+    entrypoint: ["bash"]
+    
