@@ -5,6 +5,8 @@ services:
     tty: true
     stdin_open: true
     environment:
-      PGPASSWORD: ${STUDENT_PASSWORD}
-    entrypoint: ["bash"]
-    
+      - POSTGRES_USER=myuser              # กำหนดชื่อ User
+      - POSTGRES_PASSWORD=${STUDENT_PASSWORD} # รหัสผ่านสำหรับเข้า DB
+      - POSTGRES_DB=db_6610301007         # สร้าง Database รอไว้เลย
+    volumes:
+      - .:/data                           # เชื่อมโฟลเดอร์ปัจจุบัน เข้ากับ /data ใน Container
