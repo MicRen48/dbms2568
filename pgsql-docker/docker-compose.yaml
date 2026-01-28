@@ -1,10 +1,11 @@
 services:
   pgsql:
     image: postgres:17
-    container_name: pgsql_${STUDENT_ID}
+    container_name: pgsql${STUDENT_ID}
     tty: true
     stdin_open: true
     environment:
       PGPASSWORD: ${STUDENT_PASSWORD}
     entrypoint: ["bash"]
-    
+    volumes:
+      - ./data:/data
