@@ -1,12 +1,10 @@
 services:
   pgsql:
-    image: postgres:16
+    image: postgres:17
     container_name: pgsql_${STUDENT_ID}
     tty: true
     stdin_open: true
     environment:
-      - POSTGRES_USER=myuser              # กำหนดชื่อ User
-      - POSTGRES_PASSWORD=${STUDENT_PASSWORD} # รหัสผ่านสำหรับเข้า DB
-      - POSTGRES_DB=db_6610301007         # สร้าง Database รอไว้เลย
-    volumes:
-      - .:/data                           # เชื่อมโฟลเดอร์ปัจจุบัน เข้ากับ /data ใน Container
+      PGPASSWORD: ${STUDENT_PASSWORD}
+    entrypoint: ["bash"]
+    
